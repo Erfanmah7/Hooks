@@ -1,4 +1,5 @@
 import ChildComponent from "./components/ChildComponent";
+import TransitionComponent from "./components/TransitionComponent";
 import UseRef from "./components/UseRef";
 import { useCallback, useMemo, useState } from "react";
 
@@ -21,7 +22,7 @@ function App() {
     <>
       <h3>useRef</h3>
       <UseRef />
-      <h3>useMemo</h3>
+      <h3>useMemo & useCallback</h3>
       <ChildComponent number={number} clickHandler={clickHandler} />
       <span> {slow}</span>
       <button onClick={() => setCounter((counter) => counter + 1)}>
@@ -31,6 +32,8 @@ function App() {
       <span>{number}</span>
       <button onClick={() => setNumber((number) => number + 1)}>+ child</button>
       <br />
+      <h3>useTransition</h3>
+      <TransitionComponent />
     </>
   );
 }
