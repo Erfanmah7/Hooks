@@ -1,29 +1,36 @@
-import Memo from "./components/Memo";
+import ChildComponent from "./components/ChildComponent";
 import UseRef from "./components/UseRef";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 function App() {
   console.log("render App");
 
-  const [counnter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0);
   const [number, setNumber] = useState(0);
 
   const slow = useMemo(() => {
     for (let index = 0; index < 500000000; index++) {}
-    return counnter;
-  }, [counnter]);
+    return counter;
+  }, [counter]);
+
+  const clickHandler = useCallback(() => {
+    setNumber((number) => number + 1);
+  }, [number]);
 
   return (
     <>
       <h3>useRef</h3>
       <UseRef />
       <h3>useMemo</h3>
-      <Memo number={number} />
+      <ChildComponent number={number} clickHandler={clickHandler} />
       <span> {slow}</span>
-      <button onClick={() => setCounter((counnter) => counnter + 1)}>+</button>
+      <button onClick={() => setCounter((counter) => counter + 1)}>
+        + app
+      </button>
       <br />
       <span>{number}</span>
-      <button onClick={() => setNumber((number) => number + 1)}>+</button>
+      <button onClick={() => setNumber((number) => number + 1)}>+ child</button>
+      <br />
     </>
   );
 }
