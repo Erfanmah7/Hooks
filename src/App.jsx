@@ -1,3 +1,4 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChildComponent from "./components/ChildComponent";
 import TransitionComponent from "./components/TransitionComponent";
 import UseRef from "./components/UseRef";
@@ -20,7 +21,13 @@ function App() {
 
   return (
     <>
-      <h3>useRef</h3>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ChildComponent />} />
+          <Route path="/Transition" element={<TransitionComponent />} />
+        </Routes>
+      </BrowserRouter>
+      {/* <h3>useRef</h3>
       <UseRef />
       <h3>useMemo & useCallback</h3>
       <ChildComponent number={number} clickHandler={clickHandler} />
@@ -33,7 +40,7 @@ function App() {
       <button onClick={() => setNumber((number) => number + 1)}>+ child</button>
       <br />
       <h3>useTransition</h3>
-      <TransitionComponent />
+      <TransitionComponent /> */}
     </>
   );
 }

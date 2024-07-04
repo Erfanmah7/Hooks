@@ -1,4 +1,5 @@
 import React, { useState, useTransition } from "react";
+import { useTitle } from "../hooks/CostomHooks";
 
 const numbers = (num = 10) => {
   const myArray = [];
@@ -9,6 +10,8 @@ const numbers = (num = 10) => {
 };
 
 function TransitionComponent() {
+  useTitle("Transition");
+
   const [num, setNum] = useState(numbers());
   const [value, setValue] = useState("");
   const [isPending, startTransition] = useTransition();
