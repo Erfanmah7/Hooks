@@ -12,7 +12,7 @@ function UseRef() {
     <div>
       <div>{state}</div>
       <input type="text" ref={input} />
-      <button onClick={() => setState((state) => state + 1)}>click</button>
+      <button onClick={() => setState((state) => state + 1)}>increase</button>
     </div>
   );
 }
